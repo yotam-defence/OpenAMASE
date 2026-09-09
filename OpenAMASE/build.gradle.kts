@@ -45,8 +45,12 @@ dependencies {
     implementation(files("lib/lmcplib.jar"))
 
     // FlexDock 1.2.3 — dockable window framework (MIT)
-    // Not available on Maven Central in this exact version
-    implementation(files("lib/flexdock-1.2.3.jar"))
+    // Republished on Maven Central by de.richtercloud as split submodule JARs.
+    // flexdock-view transitively depends on flexdock-perspective and flexdock-core;
+    // all three declared explicitly for build transparency.
+    implementation("de.richtercloud:flexdock-core:1.2.3")
+    implementation("de.richtercloud:flexdock-perspective:1.2.3")
+    implementation("de.richtercloud:flexdock-view:1.2.3")
 
     // SwingX 1.6.4 — extended Swing components (LGPL 2.1)
     implementation("org.swinglabs.swingx:swingx-all:1.6.4")
