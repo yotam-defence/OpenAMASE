@@ -21,6 +21,15 @@ sourceSets {
                 "src/example"
             ))
         }
+        resources {
+            setSrcDirs(listOf(
+                "src/Core",
+                "src/Amase",
+                "src/SetupTool",
+                "src/example"
+            ))
+            exclude("**/*.java")
+        }
     }
 }
 
@@ -40,8 +49,7 @@ dependencies {
     implementation(files("lib/flexdock-1.2.3.jar"))
 
     // SwingX 1.6.4 — extended Swing components (LGPL 2.1)
-    // Exact version not on Maven Central; using vendored JAR for API compatibility
-    implementation(files("lib/swingx-all-1.6.4.jar"))
+    implementation("org.swinglabs.swingx:swingx-all:1.6.4")
 
     // GRAL 0.10 — graphing library (LGPL 3.0)
     // Version 0.10 API differs from 0.11 on Maven Central; using vendored JAR
@@ -58,6 +66,10 @@ application {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+}
+
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 tasks.jar {
