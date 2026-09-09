@@ -4,3 +4,8 @@ OpenAMASE/lib/LMCP
 OpenAMASE/nbproject/private/
 /OpenAMASE/dist/
 *.class
+
+# Gradle
+.gradle/
+OpenAMASE/build/
+OpenAMASE/.gradle/
