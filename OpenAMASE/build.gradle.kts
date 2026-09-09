@@ -50,7 +50,10 @@ dependencies {
 
 application {
     mainClass.set("avtas.app.Application")
-    applicationDefaultJvmArgs = listOf("-splash:./data/amase_splash.png")
+    applicationDefaultJvmArgs = listOf(
+        "-splash:./data/amase_splash.png",
+        "-Djava.library.path=./native"
+    )
 }
 
 tasks.withType<JavaCompile> {
@@ -64,5 +67,18 @@ tasks.jar {
             "Implementation-Title" to "OpenAMASE",
             "Implementation-Version" to project.version
         )
+    }
+}
+
+distributions {
+    main {
+        contents {
+            from("config") { into("config") }
+            from("data") { into("data") }
+            from("native") { into("native") }
+            from("run") { into("run") }
+            from("docs") { into("docs") }
+            from("example scenarios") { into("example scenarios") }
+        }
     }
 }
