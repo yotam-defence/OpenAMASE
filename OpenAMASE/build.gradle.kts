@@ -12,22 +12,18 @@ java {
 }
 
 sourceSets {
+    val srcModules = listOf(
+        "src/Core",
+        "src/Amase",
+        "src/SetupTool",
+        "src/example"
+    )
     main {
         java {
-            setSrcDirs(listOf(
-                "src/Core",
-                "src/Amase",
-                "src/SetupTool",
-                "src/example"
-            ))
+            setSrcDirs(srcModules)
         }
         resources {
-            setSrcDirs(listOf(
-                "src/Core",
-                "src/Amase",
-                "src/SetupTool",
-                "src/example"
-            ))
+            setSrcDirs(srcModules)
             exclude("**/*.java")
         }
     }
